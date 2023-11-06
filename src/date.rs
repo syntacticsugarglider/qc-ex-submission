@@ -76,7 +76,7 @@ impl FromStr for Timestamp {
 mod tests {
     use std::str::FromStr;
 
-    use super::{Date, Timestamp, ParseError};
+    use super::{Date, ParseError, Timestamp};
 
     #[test]
     fn invalid_format() {

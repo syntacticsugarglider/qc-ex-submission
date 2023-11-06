@@ -69,35 +69,40 @@ mod tests {
 
     csv_parser!(
         pub Csv, CsvRow, CsvParseError
-        field_one, FieldOneError, 
+        field_one, FieldOneError,
             "field one":    String,
-        field_two, FieldTwoError, 
+        field_two, FieldTwoError,
             "field two":    isize,
-        field_three, FieldThreeError, 
+        field_three, FieldThreeError,
             "field three":    usize
     );
 
     #[test]
     fn valid_csv() {
-        assert_eq!(<Csv as FromStr>::from_str(r#"field one,field two,field three
+        assert_eq!(
+            <Csv as FromStr>::from_str(
+                r#"field one,field two,field three
 test1,-2512,123
 test2,123232,99
-,0,0"#), Ok(Csv(vec![
-            CsvRow {
-                field_one: "test1".to_string(),
-                field_two: -2512,
-                field_three: 123,
-            },
-            CsvRow {
-                field_one: "test2".to_string(),
-                field_two: 123232,
-                field_three: 99
-            },
-            CsvRow {
-                field_one: "".to_string(),
-                field_two: 0,
-                field_three: 0
-            }
-        ])));
+,0,0"#
+            ),
+            Ok(Csv(vec![
+                CsvRow {
+                    field_one: "test1".to_string(),
+                    field_two: -2512,
+                    field_three: 123,
+                },
+                CsvRow {
+                    field_one: "test2".to_string(),
+                    field_two: 123232,
+                    field_three: 99
+                },
+                CsvRow {
+                    field_one: "".to_string(),
+                    field_two: 0,
+                    field_three: 0
+                }
+            ]))
+        );
     }
 }
