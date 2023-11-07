@@ -8,4 +8,4 @@ Run tests with `cargo test`.
 
 The only external dependency is `clap`, for command-line argument parsing. Unlike most popular languages, Rust doesn't have a built-in datetime handling library. Instead, there's a de-facto standard community crate, `chrono`. I avoided using it per the letter of the exercise instructions, so this is more verbose than it otherwise would be.
 
-Finally, `assert_fs`, `assert_cmd`, and `predicates` are included as dev-dependencies, meaning they're present during testing but not linked against the final binary output. These are standard crates used for whole-system integration testing of command-line tools.
+Finally, `assert_fs`, `assert_cmd`, and `predicates` are included as dev-dependencies, meaning they're present during testing but not linked against the final binary output. These are standard crates used for whole-system integration testing of command-line tools. Note that the `tests` folder just contains executable-level system tests, and as is Rust convention more granular tests are present in their respective source files along with the functionality they exercise.
